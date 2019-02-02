@@ -29,14 +29,15 @@ public class Node implements NodeInterface {
      */
     public Node getChild(DslTag tag){
         Node node = new Node(this, tag);
-        children.add(node);
+        this.children.add(node);
+        this.currentNodeText = null; //reset currentNodeText
         return node;
     }
 
     public void addChar(char ch){
         if(this.currentNodeText == null){
             this.currentNodeText = new NodeText();
-            children.add(this.currentNodeText);
+            this.children.add(this.currentNodeText);
         }
         this.currentNodeText.addChar(ch);
     }
