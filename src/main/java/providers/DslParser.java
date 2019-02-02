@@ -12,6 +12,15 @@ public class DslParser {
     private static final Pattern dslClosePattern = Pattern.compile("\\[\\/([^\\[])+?\\]", Pattern.MULTILINE);
     private static final Pattern dslPattern = Pattern.compile("\\[[^\\[]+?\\]", Pattern.MULTILINE);
 
+    private static boolean isStandAloneTag(String dslTag){
+        if(dslTag.equalsIgnoreCase("[br]")){
+            //TODO stand alone tag need to be converted too
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public static Node parseArticleRowToNode(String row){
         row = row.trim();
         System.out.println(row);
@@ -26,14 +35,14 @@ public class DslParser {
                 int end = matcher.end();
                 String dslTagText = row.substring(start, end);
 
-                if(dslTagText.charAt(1) == '/'){    //we meet close tag => we finished parsing content between tags and return one level up
-                    //System.out.println("Close tag: " + dslTagText);
+                if(isStandAloneTag(dslTagText)){
+                    node.addText(dslTagText);
+                }else if(dslTagText.charAt(1) == '/'){    //we meet close tag => we finished parsing content between tags and return one level up
                     node.closeNode();
                     node = node.getParent();
                 } else {        //we meet open tag => we go one level deep and begin to parse this tag
                     DslTag dslTag = new DslTag(dslTagText);
                     node = node.getChild(dslTag);
-                    //System.out.println("Open tag: " + dslTagText);
                 }
 
                 row = row.substring(end);

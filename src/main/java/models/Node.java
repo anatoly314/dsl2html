@@ -41,6 +41,14 @@ public class Node implements NodeInterface {
         this.currentNodeText.addChar(ch);
     }
 
+    public void addText(String text){
+        while (text.length() > 0){
+            char ch = text.charAt(0);
+            addChar(ch);
+            text = text.substring(1);
+        }
+    }
+
     public Node getParent(){
         return this.parent;
     }
