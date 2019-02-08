@@ -23,7 +23,16 @@ public class DslRowParser {
         }
     }
 
-    public static Node parseArticleRowToNode(String row){
+
+    public static String parseDslArticleRowToHtmlRow(String dslRow){
+        Node parsedNode = DslRowParser.parseArticleRowToNode(dslRow);
+        String convertedText = parsedNode.getConvertedNodeText();
+        convertedText = convertedText.replace("\\", "");
+        return convertedText;
+
+    }
+
+    private static Node parseArticleRowToNode(String row){
         row = row.trim();
         row = StringEscapeUtils.escapeHtml4(row);
         Node node = new Node();

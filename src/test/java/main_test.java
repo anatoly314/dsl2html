@@ -12,9 +12,7 @@ public class main_test {
         StringBuilder parsedArticle = new StringBuilder();
         for (String line : lines) {
             if(line.indexOf("\t") >= 0){
-                Node node = DslRowParser.parseArticleRowToNode(line);
-                String convertedText = node.getConvertedNodeText();
-                convertedText = convertedText.replace("\\", "");
+                String convertedText = DslRowParser.parseDslArticleRowToHtmlRow(line);
                 parsedArticle.append(convertedText);
                 parsedArticle.append("\n");
             }
