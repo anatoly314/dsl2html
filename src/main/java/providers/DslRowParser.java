@@ -11,7 +11,7 @@ public class DslRowParser {
 
     private static final Pattern dslOpenPattern = Pattern.compile("\\[[^\\[\\/]+?\\]", Pattern.MULTILINE);
     private static final Pattern dslClosePattern = Pattern.compile("\\[\\/([^\\[])+?\\]", Pattern.MULTILINE);
-    private static final Pattern dslTagPattern = Pattern.compile("\\[[^\\[]+?\\]", Pattern.MULTILINE);
+    private static final Pattern dslTagPattern = Pattern.compile("\\[[^\\[]+?\\](?<!\\\\])", Pattern.MULTILINE);
     private static final Pattern dslServiceTagPattern = Pattern.compile("\\{\\{.*?\\}\\}", Pattern.MULTILINE);
 
     private static boolean isStandAloneTag(String dslTag){

@@ -13,7 +13,9 @@ public class main_test {
         for (String line : lines) {
             if(line.indexOf("\t") >= 0){
                 Node node = DslRowParser.parseArticleRowToNode(line);
-                parsedArticle.append(node.getConvertedNodeText());
+                String convertedText = node.getConvertedNodeText();
+                convertedText = convertedText.replace("\\", "");
+                parsedArticle.append(convertedText);
                 parsedArticle.append("\n");
             }
 
