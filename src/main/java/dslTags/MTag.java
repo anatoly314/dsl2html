@@ -1,7 +1,7 @@
 package dslTags;
 
-public class MTag {
-    public static String getHtmlRepresentation(String dslTag){
+public class MTag extends DslTag{
+    public static String getHtmlOpenTagRepresentation(String dslTag){
         StringBuilder htmlTag = new StringBuilder();
         htmlTag.append("<div");
 
@@ -12,5 +12,8 @@ public class MTag {
 
         htmlTag.append(">");
         return htmlTag.toString();
+    }
+    public static String getHtmlCloseTagRepresentation(){
+        return "</div>";
     }
 }

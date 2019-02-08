@@ -2,6 +2,7 @@ package providers;
 
 import models.DslTag;
 import models.Node;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +11,8 @@ public class DslParser {
 
     private static final Pattern dslOpenPattern = Pattern.compile("\\[[^\\[\\/]+?\\]", Pattern.MULTILINE);
     private static final Pattern dslClosePattern = Pattern.compile("\\[\\/([^\\[])+?\\]", Pattern.MULTILINE);
-    private static final Pattern dslPattern = Pattern.compile("\\[[^\\[]+?\\]", Pattern.MULTILINE);
+    private static final Pattern dslTagPattern = Pattern.compile("\\[[^\\[]+?\\]", Pattern.MULTILINE);
+    private static final Pattern dslServiceTagPattern = Pattern.compile("\\{\\{.*?\\}\\}", Pattern.MULTILINE);
 
     private static boolean isStandAloneTag(String dslTag){
         if(dslTag.equalsIgnoreCase("[br]")){
@@ -23,16 +25,25 @@ public class DslParser {
 
     public static Node parseArticleRowToNode(String row){
         row = row.trim();
-        System.out.println(row);
+        row = StringEscapeUtils.escapeHtml4(row);
         Node node = new Node();
         while (row.length() > 0){
 
 
-            Matcher matcher = dslPattern.matcher(row);
+            Matcher dslTagMatcher = dslTagPattern.matcher(row);
+            Matcher dslServiceTagMatcher = dslServiceTagPattern.matcher(row);
 
-            if(matcher.find() && matcher.start() == 0){  //if we found DSL tag
-                int start = matcher.start();
-                int end = matcher.end();
+            //we ignore service tag of type {{...}}
+            //https://anatoly314.github.io/dsl-manual/#tag_service.html#comm
+            if(dslServiceTagMatcher.find() && dslServiceTagMatcher.start() == 0){
+                int end = dslServiceTagMatcher.end();
+                row = row.substring(end);
+                continue;
+            }
+
+            if(dslTagMatcher.find() && dslTagMatcher.start() == 0){  //if we found DSL tag
+                int start = dslTagMatcher.start();
+                int end = dslTagMatcher.end();
                 String dslTagText = row.substring(start, end);
 
                 if(isStandAloneTag(dslTagText)){
@@ -60,7 +71,6 @@ public class DslParser {
             node.closeNode();
         }
 
-        System.out.println(node.getConvertedNodeText());
         return node;
     }
 }
