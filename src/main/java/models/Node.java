@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Node implements NodeInterface {
-    private DslTag dslTag;
+    private DslTagParser dslTagParser;
     private Node parent;
     private List<NodeInterface> children;
     private NodeText currentNodeText;
@@ -16,10 +16,10 @@ public class Node implements NodeInterface {
         this.level = 0;
     }
 
-    public Node(Node parent, DslTag dslTag){
+    public Node(Node parent, DslTagParser dslTagParser){
         this();
         this.parent = parent;
-        this.dslTag = dslTag;
+        this.dslTagParser = dslTagParser;
         this.level = parent.getLevel() + 1;
     }
 
@@ -27,7 +27,7 @@ public class Node implements NodeInterface {
      * Creating a nested Node and passing a current Node as parent of nested Node
      * @return
      */
-    public Node getChild(DslTag tag){
+    public Node getChild(DslTagParser tag){
         Node node = new Node(this, tag);
         this.children.add(node);
         this.currentNodeText = null; //reset currentNodeText
@@ -64,9 +64,9 @@ public class Node implements NodeInterface {
             }
         }
 
-        if(this.dslTag != null){
-            convertedNodeTextBuilder.insert(0, this.dslTag.getConvertedDsl2HtmlOpenTag());
-            convertedNodeTextBuilder.append(this.dslTag.getConvertedDsl2HtmlCloseTag());
+        if(this.dslTagParser != null){
+            convertedNodeTextBuilder.insert(0, this.dslTagParser.getConvertedDsl2HtmlOpenTag());
+            convertedNodeTextBuilder.append(this.dslTagParser.getConvertedDsl2HtmlCloseTag());
         }
 
         this.convertedNodeText = convertedNodeTextBuilder.toString();

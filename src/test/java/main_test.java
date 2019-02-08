@@ -1,5 +1,5 @@
 import models.Node;
-import providers.DslParser;
+import providers.DslRowParser;
 import providers.FileProvider;
 
 public class main_test {
@@ -12,7 +12,7 @@ public class main_test {
         StringBuilder parsedArticle = new StringBuilder();
         for (String line : lines) {
             if(line.indexOf("\t") >= 0){
-                Node node = DslParser.parseArticleRowToNode(line);
+                Node node = DslRowParser.parseArticleRowToNode(line);
                 parsedArticle.append(node.getConvertedNodeText());
                 parsedArticle.append("\n");
             }

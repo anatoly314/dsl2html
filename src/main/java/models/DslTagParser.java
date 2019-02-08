@@ -2,7 +2,7 @@ package models;
 
 import dslTags.*;
 
-public class DslTag {
+public class DslTagParser {
     private String tagContext;
     private String tag;
     private String color;
@@ -42,12 +42,12 @@ public class DslTag {
             this.htmlOpenTag =  StarTag.getHtmlOpenTagRepresentation();
             this.htmlCloseTag = StarTag.getHtmlCloseTagRepresentation();
         } else {
-            this.htmlOpenTag = "<span>";
-            this.htmlCloseTag = "</span>";
+            this.htmlOpenTag = DslTag.getHtmlOpenTagRepresentation();
+            this.htmlCloseTag = DslTag.getHtmlCloseTagRepresentation();
         }
     }
 
-    public DslTag(String tagContext){
+    public DslTagParser(String tagContext){
         this.tagContext = tagContext;
         parseTagContext();
     }

@@ -1,13 +1,13 @@
 package providers;
 
-import models.DslTag;
+import models.DslTagParser;
 import models.Node;
 import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DslParser {
+public class DslRowParser {
 
     private static final Pattern dslOpenPattern = Pattern.compile("\\[[^\\[\\/]+?\\]", Pattern.MULTILINE);
     private static final Pattern dslClosePattern = Pattern.compile("\\[\\/([^\\[])+?\\]", Pattern.MULTILINE);
@@ -52,8 +52,8 @@ public class DslParser {
                     node.closeNode();
                     node = node.getParent();
                 } else {        //we meet open tag => we go one level deep and begin to parse this tag
-                    DslTag dslTag = new DslTag(dslTagText);
-                    node = node.getChild(dslTag);
+                    DslTagParser dslTagParser = new DslTagParser(dslTagText);
+                    node = node.getChild(dslTagParser);
                 }
 
                 row = row.substring(end);
