@@ -11,16 +11,19 @@ public class main_test {
         String lines[] = fileText.split("\\r?\\n");
         StringBuilder parsedArticle = new StringBuilder();
         for (String line : lines) {
-            if(line.indexOf("\t") >= 0){
+            int firstCharCode = (int)line.charAt(0);
+            if(firstCharCode == 32 || firstCharCode == 9){//if line begins with space
                 String convertedText = DslRowParser.parseDslArticleRowToHtmlRow(line);
                 parsedArticle.append(convertedText);
                 parsedArticle.append("\n");
+            }else if(!line.trim().isEmpty()){
+                System.out.println(line);
+                parsedArticle.append("<br><hr><br>\n");
             }
 
         }
         String outputArticle = parsedArticle.toString();
         htmlTemplate = htmlTemplate.replace("{{CONTENT}}", outputArticle);
-        System.out.println(outputArticle);
         FileProvider.saveToFile("article-output.html", htmlTemplate);
 
     }

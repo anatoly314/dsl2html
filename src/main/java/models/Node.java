@@ -10,8 +10,10 @@ public class Node implements NodeInterface {
     private NodeText currentNodeText;
     private int level;
     private String convertedNodeText;
+    private boolean closedNode;
 
     public Node(){
+        this.closedNode = false;
         this.children = new ArrayList<>();
         this.level = 0;
     }
@@ -50,6 +52,9 @@ public class Node implements NodeInterface {
         }
     }
 
+    public boolean isClosedNode(){
+        return this.closedNode;
+    }
     public Node getParent(){
         return this.parent;
     }
@@ -69,6 +74,7 @@ public class Node implements NodeInterface {
             convertedNodeTextBuilder.append(this.dslTagParser.getConvertedDsl2HtmlCloseTag());
         }
 
+        this.closedNode = true;
         this.convertedNodeText = convertedNodeTextBuilder.toString();
     }
 

@@ -9,8 +9,6 @@ import java.util.regex.Pattern;
 
 public class DslRowParser {
 
-    private static final Pattern dslOpenPattern = Pattern.compile("\\[[^\\[\\/]+?\\]", Pattern.MULTILINE);
-    private static final Pattern dslClosePattern = Pattern.compile("\\[\\/([^\\[])+?\\]", Pattern.MULTILINE);
     private static final Pattern dslTagPattern = Pattern.compile("\\[[^\\[]+?\\](?<!\\\\])", Pattern.MULTILINE);
     private static final Pattern dslServiceTagPattern = Pattern.compile("\\{\\{.*?\\}\\}", Pattern.MULTILINE);
 
@@ -27,7 +25,11 @@ public class DslRowParser {
     public static String parseDslArticleRowToHtmlRow(String dslRow){
         Node parsedNode = DslRowParser.parseArticleRowToNode(dslRow);
         String convertedText = parsedNode.getConvertedNodeText();
-        convertedText = convertedText.replace("\\", "");
+        if(convertedText != null){
+            convertedText = convertedText.replace("\\", "");
+        }else{
+            System.out.println(dslRow);
+        }
         return convertedText;
 
     }
@@ -56,7 +58,7 @@ public class DslRowParser {
                 String dslTagText = row.substring(start, end);
 
                 if(isStandAloneTag(dslTagText)){
-                    node.addText(dslTagText);
+                    node.addText(dslTagText);//TODO [br] tag need to be converted
                 }else if(dslTagText.charAt(1) == '/'){    //we meet close tag => we finished parsing content between tags and return one level up
                     node.closeNode();
                     node = node.getParent();
@@ -77,6 +79,12 @@ public class DslRowParser {
         while (node.getLevel() > 0){
             node.closeNode();
             node = node.getParent();
+            node.closeNode();
+        }
+
+        //sometimes parent node not being closed, it happens when even number of tags within the row
+        //TODO not fully understand why this happen, need to learn it deeply
+        if(node.getLevel() == 0 && !node.isClosedNode()){
             node.closeNode();
         }
 
