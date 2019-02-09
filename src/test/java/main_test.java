@@ -1,11 +1,10 @@
-import models.Node;
 import providers.DslRowParser;
 import providers.FileProvider;
 
 public class main_test {
     public static void main(String[] args){
 
-        String htmlTemplate = FileProvider.getFileByFileName("template.html");
+        String htmlTemplate = FileProvider.getFileByFileName("html-template/single-article-template.html");
 
         String fileText = FileProvider.getFileByFileName("single-article.txt");
         String lines[] = fileText.split("\\r?\\n");
