@@ -3,13 +3,12 @@ package models;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class Dictionary {
@@ -20,13 +19,20 @@ public class Dictionary {
     private String abbreviationFilePath;
 
     private void createArticlesIndex(String filename) throws IOException{
-        try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            for(String line; (line = br.readLine()) != null; ) {
-                if (!Character.isWhitespace(line.charAt(0))) {
-                    System.out.println(line);
+        this.articlesIndex = new LinkedHashMap<>();
+        try (Stream<String> stream = Files.lines(Paths.get(filename), Charset.forName("UTF-16LE"))) {
+            Iterator<String> iterator = stream.iterator();
+            for (int lineNumber = 0; iterator.hasNext(); lineNumber++) {
+                String line = iterator.next();
+                if (!line.isEmpty() && !Character.isWhitespace(line.charAt(0)) && line.charAt(0) != '#') {
+                    this.createTitleCombinationsAndAddToIndex(line, lineNumber);
                 }
             }
         }
+    }
+
+    private void createTitleCombinationsAndAddToIndex(String originalTitle, Integer lineNumber){
+        this.articlesIndex.put(originalTitle, lineNumber);
     }
 
     private boolean isDirectoryExists(String dictionaryDirectory){
