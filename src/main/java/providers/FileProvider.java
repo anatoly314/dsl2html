@@ -37,16 +37,25 @@ public class FileProvider {
     }
 
 
-    public static String readFileBetweenLineNumbers(String filePath, Integer from, Integer to) throws IOException{
+    public static String readArticleBetweenFirstLineAndLastLine(String filePath, Integer from) throws IOException{
         int currentLineIndex = 0;
         StringBuilder text = new StringBuilder();
         try (Stream<String> stream = Files.lines(Paths.get(filePath), Charset.forName("UTF-16LE"))) {
+            boolean articleLastLineReached = false;
+            boolean parsingArticleContent = false; //it can be multiple titles
             Iterator<String> iterator = stream.iterator();
-            while (currentLineIndex <= to && iterator.hasNext()){
+            while (iterator.hasNext() && !articleLastLineReached){
                 String line = iterator.next();
-                if(currentLineIndex >= from && currentLineIndex <= to){
-                    text.append(line);
-                    text.append("\n");
+                if(currentLineIndex >= from){
+                    if(Character.isWhitespace(line.charAt(0))){ //when we first reached line with whitespace at the beginning it means we began parsing article
+                        parsingArticleContent = true;
+                    }
+                    if(parsingArticleContent && (line.isEmpty() || !Character.isWhitespace(line.charAt(0)))){  //reached end of current article
+                        articleLastLineReached = true;
+                    }else{  //we in the middle parsing current article's titles or article's body
+                        text.append(line);
+                        text.append("\n");
+                    }
                 }
                 currentLineIndex++;
             }

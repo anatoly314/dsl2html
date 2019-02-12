@@ -23,7 +23,7 @@ public class Dictionary {
     private String abbreviationFilePath;
 
     private void createArticlesIndex(String filename) throws IOException{
-        this.articlesIndex = new LinkedHashMap<>();
+        this.articlesIndex = new HashMap<>();
         try (Stream<String> stream = Files.lines(Paths.get(filename), Charset.forName("UTF-16LE"))) {
             Iterator<String> iterator = stream.iterator();
             for (int lineNumber = 0; iterator.hasNext(); lineNumber++) {
@@ -31,10 +31,13 @@ public class Dictionary {
 
                 if(lineNumber == 0){    //#NAME
                     this.dictionaryName = line.replace("#NAME", "").trim();
+                    continue;
                 } else if(lineNumber == 1) {    //#INDEX_LANGUAGE
                     this.indexLanguage = line.replace("#INDEX_LANGUAGE", "").trim();
+                    continue;
                 } else if(lineNumber == 2) {    //#CONTENTS_LANGUAGE
                     this.contentLanguage = line.replace("#CONTENTS_LANGUAGE", "").trim();
+                    continue;
                 }
 
                 if (!line.isEmpty() && !Character.isWhitespace(line.charAt(0)) && line.charAt(0) != '#') {
@@ -45,7 +48,7 @@ public class Dictionary {
     }
 
     private void createTitleCombinationsAndAddToIndex(String originalTitle, Integer lineNumber){
-        this.articlesIndex.put(originalTitle, lineNumber);
+        this.articlesIndex.put(originalTitle.toLowerCase(), lineNumber);
     }
 
     private boolean isDirectoryExists(String dictionaryDirectory){
@@ -67,6 +70,16 @@ public class Dictionary {
                     });
         }
         return list;
+    }
+
+    public String getArticleByWord(String word) throws IOException{
+        word = word.toLowerCase();
+        if(this.articlesIndex.containsKey(word)){
+            int from = this.articlesIndex.get(word);
+            String articleTitleAndBody = FileProvider.readArticleBetweenFirstLineAndLastLine(this.mainTextFilePath, from);
+            return articleTitleAndBody;
+        }
+        return null;
     }
 
     public Dictionary(String dictionaryDirectory){
@@ -93,11 +106,6 @@ public class Dictionary {
                 System.out.println("Dictionary name: " + this.dictionaryName);
                 System.out.println("Index language: " + this.indexLanguage);
                 System.out.println("Content language: " + this.contentLanguage);
-
-
-                String test = FileProvider.readFileBetweenLineNumbers(this.mainTextFilePath, 650222, 650230);
-                System.out.println(test);
-
             } catch (Exception ex){
                 System.out.println(ex.toString());
             }
