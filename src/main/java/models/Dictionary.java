@@ -1,5 +1,7 @@
 package models;
 
+import providers.FileProvider;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +16,8 @@ import java.util.stream.Stream;
 public class Dictionary {
     private Map<String, Integer> articlesIndex;
     private String dictionaryName;
+    private String indexLanguage;   //from
+    private String contentLanguage; //to
     private String mainTextFilePath;
     private String annotationFilePath;
     private String abbreviationFilePath;
@@ -24,6 +28,15 @@ public class Dictionary {
             Iterator<String> iterator = stream.iterator();
             for (int lineNumber = 0; iterator.hasNext(); lineNumber++) {
                 String line = iterator.next();
+
+                if(lineNumber == 0){    //#NAME
+                    this.dictionaryName = line.replace("#NAME", "").trim();
+                } else if(lineNumber == 1) {    //#INDEX_LANGUAGE
+                    this.indexLanguage = line.replace("#INDEX_LANGUAGE", "").trim();
+                } else if(lineNumber == 2) {    //#CONTENTS_LANGUAGE
+                    this.contentLanguage = line.replace("#CONTENTS_LANGUAGE", "").trim();
+                }
+
                 if (!line.isEmpty() && !Character.isWhitespace(line.charAt(0)) && line.charAt(0) != '#') {
                     this.createTitleCombinationsAndAddToIndex(line, lineNumber);
                 }
@@ -77,6 +90,14 @@ public class Dictionary {
                 System.out.println("Main file: " + this.mainTextFilePath);
                 System.out.println("Annotation file: " + this.annotationFilePath);
                 System.out.println("Abbreviation file: " + this.abbreviationFilePath);
+                System.out.println("Dictionary name: " + this.dictionaryName);
+                System.out.println("Index language: " + this.indexLanguage);
+                System.out.println("Content language: " + this.contentLanguage);
+
+
+                String test = FileProvider.readFileBetweenLineNumbers(this.mainTextFilePath, 650222, 650230);
+                System.out.println(test);
+
             } catch (Exception ex){
                 System.out.println(ex.toString());
             }
