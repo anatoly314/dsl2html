@@ -1,9 +1,6 @@
 package models;
 
 import providers.FileProvider;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -16,11 +13,25 @@ import java.util.stream.Stream;
 public class Dictionary {
     private Map<String, Integer> articlesIndex;
     private String dictionaryName;
+    private String dictionaryDirectory;
     private String indexLanguage;   //from
     private String contentLanguage; //to
     private String mainTextFilePath;
     private String annotationFilePath;
     private String abbreviationFilePath;
+    private boolean dictionaryInitialized;
+
+    public String getDictionaryName(){
+        return this.dictionaryName;
+    }
+
+    public String getDictionaryDirectory(){
+        return this.dictionaryDirectory;
+    }
+
+    public boolean isDictionaryInitialized(){
+        return this.dictionaryInitialized;
+    }
 
     private void createArticlesIndex(String filename) throws IOException{
         this.articlesIndex = new HashMap<>();
@@ -45,6 +56,7 @@ public class Dictionary {
                 }
             }
         }
+        this.dictionaryInitialized = true;
     }
 
     private void createTitleCombinationsAndAddToIndex(String originalTitle, Integer lineNumber){
@@ -83,15 +95,17 @@ public class Dictionary {
     }
 
     public Dictionary(String dictionaryDirectory){
+        this.dictionaryInitialized = false;
+        this.dictionaryDirectory = dictionaryDirectory;
         if(this.isDirectoryExists(dictionaryDirectory)){
             try {
                 List<String> directoryFiles = this.getDirectoryFileNames(dictionaryDirectory);
                 directoryFiles.forEach(filePath -> {
-                    if(filePath.indexOf("_abrv.dsl") >= 0){
+                    if(filePath.endsWith("_abrv.dsl")){
                         this.abbreviationFilePath = filePath;
-                    }else if(filePath.indexOf(".dsl") >= 0 && filePath.indexOf("_abrv.dsl") < 0){
+                    }else if(filePath.endsWith(".dsl") && !filePath.endsWith("_abrv.dsl")){
                         this.mainTextFilePath = filePath;
-                    }else if(filePath.indexOf(".ann") >= 0 && filePath.indexOf("_abrv.ann") < 0){
+                    }else if(filePath.endsWith(".ann") && !filePath.endsWith("_abrv.ann")){
                         this.annotationFilePath = filePath;
                     }
                 });
