@@ -1,5 +1,6 @@
 package models;
 
+import providers.DictionariesProvider;
 import providers.DslArticle2HtmlParser;
 import providers.Lemmatizer;
 
@@ -15,7 +16,8 @@ public class WordTranslation {
     private Map<String, String> htmlArticles;
     private boolean translationFound;
 
-    private void translateWord(List<Dictionary> dictionaries){
+    private void translateWord(){
+        List<Dictionary> dictionaries = DictionariesProvider.getListOfDictionaries();
         dslArticles = new HashMap<>();
         htmlArticles = new HashMap<>();
         dictionaries.forEach(dictionary -> {
@@ -24,7 +26,7 @@ public class WordTranslation {
                 String dslArticle = dictionary.getArticleByWord(this.sourceWordLemmatized);
                 if(dslArticle != null){
                     dslArticles.put(dictionaryName, dslArticle);
-                    htmlArticles.put(dictionaryName, DslArticle2HtmlParser.getHtmlArticle(dslArticle));
+                    htmlArticles.put(dictionaryName, DslArticle2HtmlParser.getHtmlArticle(dslArticle, dictionaryName));
                 }
             }catch (IOException ex){
                 System.err.println("Error at: " + dictionaryName + " Stacktrace: " + ex.getMessage());
@@ -32,11 +34,10 @@ public class WordTranslation {
         });
     }
 
-    public WordTranslation(String sourceWord, List<Dictionary> dictionaries){
+    public WordTranslation(String sourceWord){
         this.sourceWord = sourceWord;
         this.sourceWordLemmatized = Lemmatizer.lemmatizeWord(sourceWord);
-        System.out.println("source word: " + sourceWord + " lemmatized word: " + this.sourceWordLemmatized);
-        this.translateWord(dictionaries);
+        this.translateWord();
     }
 
     public String getSourceWord() {

@@ -19,6 +19,7 @@ public class Dictionary {
     private String mainTextFilePath;
     private String annotationFilePath;
     private String abbreviationFilePath;
+    private String resourceFilePath;
     private boolean dictionaryInitialized;
 
     public String getDictionaryName(){
@@ -27,6 +28,10 @@ public class Dictionary {
 
     public String getDictionaryDirectory(){
         return this.dictionaryDirectory;
+    }
+
+    public String getResourceFilePath(){
+        return this.resourceFilePath;
     }
 
     public boolean isDictionaryInitialized(){
@@ -107,6 +112,8 @@ public class Dictionary {
                         this.mainTextFilePath = filePath;
                     }else if(filePath.endsWith(".ann") && !filePath.endsWith("_abrv.ann")){
                         this.annotationFilePath = filePath;
+                    }else if(filePath.endsWith(".dsl.files.zip")){
+                        this.resourceFilePath = filePath;
                     }
                 });
 

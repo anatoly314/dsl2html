@@ -1,0 +1,243 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>again</title>
+    <script>
+        function toggleSecondaryContent(event){
+            var articleId = event.path[2].getAttribute("id");
+            var elements = document.getElementById(articleId).getElementsByClassName('secondary-content');
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+                var displayProperty = element.style.display;
+                if(displayProperty === "" || displayProperty === "none"){
+                    element.style.display = 'initial';
+                }else {
+                    element.style.display = 'none';
+                }
+            }
+
+            var buttonElement = document.getElementById(articleId).getElementsByTagName('button')[0];
+            if(buttonElement.className.indexOf("show-secondary-content-button") >= 0){
+                buttonElement.className = "hide-secondary-content-button";
+            }else{
+                buttonElement.className = "show-secondary-content-button";
+            }
+
+        }
+    </script>
+    <style>
+        h3{
+            display: inline;
+        }
+        button{
+            background-repeat: no-repeat;
+            width: 1rem;
+            height: 1rem;
+            background-size: cover;
+            background-position: center;
+            outline: none;
+            display: inline;
+        }
+
+        .secondary-content{
+            display:none;
+        }
+
+        .hide-secondary-content-button {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJtaW51cy1zcXVhcmUiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1taW51cy1zcXVhcmUgZmEtdy0xNCIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik00MDAgMzJINDhDMjEuNSAzMiAwIDUzLjUgMCA4MHYzNTJjMCAyNi41IDIxLjUgNDggNDggNDhoMzUyYzI2LjUgMCA0OC0yMS41IDQ4LTQ4VjgwYzAtMjYuNS0yMS41LTQ4LTQ4LTQ4ek05MiAyOTZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDI2NGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTZjMCA2LjYtNS40IDEyLTEyIDEySDkyeiI+PC9wYXRoPjwvc3ZnPg==);
+        }
+
+        .show-secondary-content-button {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJwbHVzLXNxdWFyZSIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXBsdXMtc3F1YXJlIGZhLXctMTQiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNDQ4IDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDAwIDMySDQ4QzIxLjUgMzIgMCA1My41IDAgODB2MzUyYzAgMjYuNSAyMS41IDQ4IDQ4IDQ4aDM1MmMyNi41IDAgNDgtMjEuNSA0OC00OFY4MGMwLTI2LjUtMjEuNS00OC00OC00OHptLTMyIDI1MmMwIDYuNi01LjQgMTItMTIgMTJoLTkydjkyYzAgNi42LTUuNCAxMi0xMiAxMmgtNTZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtOTJIOTJjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDkydi05MmMwLTYuNiA1LjQtMTIgMTItMTJoNTZjNi42IDAgMTIgNS40IDEyIDEydjkyaDkyYzYuNiAwIDEyIDUuNCAxMiAxMnY1NnoiPjwvcGF0aD48L3N2Zz4=);
+        }
+
+        .dictionary-name{
+            border: dotted 1px grey;
+            padding: 5px;
+            border-radius: 3px;
+            margin: 1rem 0 1rem 0;
+        }
+
+        .dictionary-title{
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="d7621ccd62cd05d44b3ef6fdd3cc0990a1ba1790">
+    <div class="dictionary-name">
+        From ﻿	"LingvoUniversal (En-Ru)"
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>again</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        [<span>ə'gen, ə'geɪn</span>] <span style="font-style: italic; color: green;;">брит.</span> <span>External Resource</span> / <span style="font-style: italic; color: green;;">амер.</span> <span>External Resource</span>
+<span style="font-style: italic; color: green;;">нареч.</span>
+<div style="padding-left:1em;">1) <span>ещё, вновь, опять</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>again and again</span> &mdash; снова и снова, то и дело</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>once / yet again</span> &mdash; ещё раз</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>time and again</span> &mdash; неоднократно, то и дело, часто</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>to start all over again</span> &mdash; начать всё сначала</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>to be oneself again</span> &mdash; оправиться после болезни</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>And Robin never was himself again.</span> &mdash; Но Робину уже не суждено было поправиться.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span style="font-weight: bold;">Syn:</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>anew</span>, <span>afresh</span></span></div>
+<div style="padding-left:1em;">2) <span>с другой стороны, кроме того, к тому же <span><span style="color:null;">(как вводное слово)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>these again are more expensive</span> &mdash; но эти, с другой стороны, дороже</span></span></div>
+<div style="padding-left:1em;">3) <span>больше <span><span style="color:null;">(при сравнении двух величин)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>half as high again as smb.</span> &mdash; в полтора раза выше, чем кто-л.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>A house in the city costs twice as much again as a house in the countryside.</span> &mdash; Дом в городе стоит в два раза больше, чем дом в деревне.</span></span></div>
+<div style="padding-left:1em;"><span style="color:grey;" class="secondary-content">&bull;</span></div>
+<div style="padding-left:1em;"><span style="color:grey;" class="secondary-content"><span><span>as much again</span> &mdash; ещё столько же</span></span></div>
+<div style="padding-left:1em;"><span style="color:grey;" class="secondary-content"><span><span>now and again</span> &mdash; иногда; время от времени</span></span></div>
+
+    </div>
+</div><div id="13e9e6c4ca4535bc9eaca422190d0fc2945d3643">
+    <div class="dictionary-name">
+        From ﻿	"Collins (En-En)"
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>again</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        [əˈgɛn, əˈgeın]
+<span style="font-style: italic; color: green;;">adv</span>
+<div style="padding-left:1em;">1) <span>another or second time; once more; anew</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>he had to start again</span></span></div>
+<div style="padding-left:1em;">2) <span>once more in a previously experienced or encountered place, state, or condition</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>he is ill again</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>he came back again</span></span></div>
+<div style="padding-left:1em;">3) <span>in addition to the original amount, quantity, etc. (esp in the phrases <span style="font-weight: bold;">as much again; half as much again</span>)</span></div>
+<div style="padding-left:1em;">4) <span>(<span>sentence modifier</span>) on the other hand</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>he might come and then again he might not</span></span></div>
+<div style="padding-left:1em;">5) <span>besides; also</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>she is beautiful and, again, intelligent</span></span></div>
+<div style="padding-left:1em;">6) <span><span style="color:null;"><span><span style="color:null;">archaic</span></span></span> in reply; back</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>he answered again to the questioning voice</span></span></div>
+<div style="padding-left:1em;">7)</div>
+<div style="padding-left:2em;">- <span>again and again</span></div>
+<div style="padding-left:1em;">8) <span>(<span>used with a negative</span>) <span><span style="color:null;"><span style="color:null;">Caribbean</span></span></span> any more; any longer</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>I don't eat pumpkin again</span></span></div>
+<span><span style="color:null;"><span style="color:null;">sentence connector</span></span></span>
+<div style="padding-left:1em;">9) <span>moreover; furthermore</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>again, it could be said that he is not dead</span></span></div>
+<div style="padding-left:1em;"><span style="color:grey;" class="secondary-content">&bull;</span></div>
+<div><span style="color:grey;" class="secondary-content"><span style="font-weight: bold;">Etymology:</span></span></div>
+<div><span style="color:grey;" class="secondary-content"><span style="color:null;">Old English <span>ongegn</span> opposite to</span>, <span style="color:null;">from A- <span>2</span> + <span>gegn</span> straight</span></span></div>
+
+
+    </div>
+</div><div id="50bdf6af181050f36d17775a219b97a1b2f314ce">
+    <div class="dictionary-name">
+        From ﻿ "Oxford Advanced Learners Dictionary 8th Ed."
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>again</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        <div style="padding-left:0em;"><span style="color:darkgray;"> </span><span style="font-weight: bold;"><span style="color:red;">again</span></span> <span style="font-style: italic; color: green;;">BrE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡen]</span> <span>External Resource</span> <span style="font-style: italic; color: green;;">NAmE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡen]</span> <span>External Resource</span> <span style="font-style: italic; color: green;;">BrE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡeɪn]</span> <span>External Resource</span> <span style="font-style: italic; color: green;;">NAmE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡeɪn]</span> <span>External Resource</span> <span style="color:orange;"> adverb</span></div>
+<div style="padding-left:1em;"><span style="color:red;"><span style="font-weight: bold;">1.</span></span> one more time; on another occasion</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content"> Could you say it again, please? </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content"> When will I see you again? </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">This must never happen again. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span style="font-weight: bold;"><span style="color:darkslategray;">Once again </span></span><span style="color:darkgray;"> </span><span style="color:darkslategray;">(= as had happened several times before)</span><span><span style="color:grey;" class="secondary-content">, the train was late. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">I've told you  </span></span><span style="font-weight: bold;"><span style="color:darkslategray;">again and again </span></span><span style="color:darkgray;"> </span><span style="color:darkslategray;">(= many times) </span><span><span style="color:grey;" class="secondary-content"> not to do that. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">I'll have to write it  </span></span><span style="font-weight: bold;"><span style="color:darkslategray;">all over again </span></span><span style="color:darkgray;"> </span><span style="color:darkslategray;">(= again from the beginning)</span><span><span style="color:grey;" class="secondary-content">. </span></span></div>
+<div style="padding-left:1em;"><span style="color:red;"><span style="font-weight: bold;">2.</span></span> <span style="color:darkslategray;">showing that sb/sth is in the same place or state that they were in originally </span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content"> He was glad to be home again. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content"> She spends two hours a day getting to work and  </span></span><span style="font-weight: bold;"><span style="color:darkslategray;">back again</span></span><span><span style="color:grey;" class="secondary-content">. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">You'll soon feel well again. </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">3.</span></span> added to an amount that is already there</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">The cost is about  </span></span><span style="font-weight: bold;"><span style="color:darkslategray;">half as much again </span></span><span><span style="color:grey;" class="secondary-content"> as it was two years ago. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">I'd like  </span></span><span style="font-weight: bold;"><span style="color:darkslategray;">the same again </span></span><span style="color:darkgray;"> </span><span style="color:darkslategray;">(= the same amount or the same thing)</span><span><span style="color:grey;" class="secondary-content">. </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">4.</span></span> <span style="color:darkslategray;">used to show that a comment or fact is connected with what you have just said </span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">And again, we must think of the cost. </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">5.</span></span> then/there ~ <span style="color:darkgray;"> </span><span style="color:darkslategray;">used to introduce a fact or an opinion that contrasts with what you have just said </span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">We might buy it but then again we might not. </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">6.</span></span> <span style="color:darkslategray;">used when you ask sb to tell you sth or repeat sth that you think they have told you already </span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">What was the name again? </span></span></div>
+<div style="padding-left:2em;"><span style="color:darkcyan;"><span style="font-weight: bold;"> see </span></span> <span style="color:dimgray;">(every) now and again/then</span><span style="color:darkcyan;"><span style="font-weight: bold;"> at </span></span> &uarr;&lt;&lt;now&gt;&gt; <span style="color:darkgray;"> </span><span style="color:rosybrown;"><sub>adv.</sub></span><span style="color:darkgray;">, </span><span style="color:dimgray;">(the) same again</span><span style="color:darkcyan;"><span style="font-weight: bold;"> at </span></span> &uarr;&lt;&lt;same&gt;&gt; <span style="color:darkgray;"> </span><span style="color:rosybrown;"><sub>pron.</sub></span><span style="color:darkgray;">, </span><span style="color:dimgray;">time and (time) again</span><span style="color:darkcyan;"><span style="font-weight: bold;"> at </span></span> &uarr;&lt;&lt;time&gt;&gt; <span style="color:darkgray;"> </span><span style="color:rosybrown;"><sub>n. </sub></span> <div style="padding-left:3em;">&nbsp;</div></div>
+<div style="padding-left:3em;"><span style="color:darkslategray;"><span style="text-decoration: underline;">Word&nbsp;Origin:</span></span></div>
+<div style="padding-left:3em;"> <span style="color:rosybrown;">[</span><span style="color:darkslategray;"><span style="font-weight: bold;">again</span></span><span style="color:rosybrown;">]</span> <span style="color:darkgray;"> </span><span style="color:darkslategray;">Old English </span><span style="color:darkgray;"> </span><span style="color:darkslategray;">ongēan</span><span style="color:dimgray;">,  </span><span style="color:darkslategray;">ong&aelig;gn</span><span style="color:dimgray;">, etc., of  </span><span style="color:darkslategray;">Germanic </span><span style="color:dimgray;"> origin; related to  </span><span style="color:darkslategray;">German </span><span style="color:darkgray;"> </span><span style="color:darkcyan;">entgegen </span><span style="color:darkgray;"> </span><span style="color:darkslateblue;"><span style="font-weight: bold;">&lsquo;opposite&rsquo;</span></span><span style="color:dimgray;">. </span></div>
+
+    </div>
+</div><div id="7b1468c00744d66abd2dcb865b56d80cd447975a">
+    <div class="dictionary-name">
+        From ﻿ "Cambridge Advanced Learner's Dictionary, 4th Ed.(En-En)"
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>again</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        <div style="padding-left:1em;">&mdash;<span style="color:blue;"><span style="font-weight: bold;">again</span></span> <span style="font-style: italic; color: green;;">UK</span> <span>External Resource</span> <span style="font-style: italic; color: green;;">US</span> <span>External Resource</span> /əˈɡen/ /-ˈɡeɪn/ <span style="font-style: italic; color: green;;">aep</span> /-ˈɡen/</div>
+<div style="padding-left:1em;"><span style="color:crimson;"><span style="font-weight: bold;">Ⅰ.</span></span> <span style="font-style: italic; color: green;;">adverb</span> <span style="color:mediumvioletred;"><span style="font-weight: bold;">(IN ADDITION)</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">▸</span></span> <span style="font-style: italic; color: green;;">F0</span> <span style="color:null;">in addition to the amount we know about or have mentioned already: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>They are paid half <span style="font-weight: bold;">as much</span> again as we are.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Also, extra, and in addition</span></div>
+<div style="padding-left:1em;"><span style="color:crimson;"><span style="font-weight: bold;">Ⅱ.</span></span> <span style="font-style: italic; color: green;;">adverb</span> <span style="color:mediumvioletred;"><span style="font-weight: bold;">(ONE MORE TIME)</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">1.</span></span> <span style="font-style: italic; color: green;;">A1</span> <span style="color:null;">one more time: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>Could you spell your name again, please?</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>If he does it again I'll have to tell him.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>Deborah's late again.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>Throw it away and <span style="font-weight: bold;">start</span> again.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Continually and repeatedly</span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">2.</span></span> <span style="font-style: italic; color: green;;">A2</span> <span style="color:null;">back to the original place or condition: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>We went to Edinburgh and <span style="font-weight: bold;">back</span> again all in one day.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>Get some rest and you'll soon be well again.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Continually and repeatedly</span></div>
+<div style="padding-left:1em;"><span style="color:darkblue;"><span style="font-weight: bold;">once again</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">3.</span></span> <span style="font-style: italic; color: green;;">B1</span> <span style="color:null;">If something happens once again, it has already happened several times before: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>You are reminded once again of the author's love of the sea.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Continually and repeatedly</span></div>
+<div style="padding-left:1em;"><span style="color:darkblue;"><span style="font-weight: bold;">never again!</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">4.</span></span> <span style="font-style: italic; color: green;;">F0</span> <span style="color:null;">said after an unpleasant experience to show that you do not intend to do it again: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>He drove me back home last night. Never again!</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Always and never</span></div>
+<div style="padding-left:1em;"><span style="color:darkblue;"><span style="font-weight: bold;">yet again</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">5.</span></span> <span style="font-style: italic; color: green;;">B2</span> <span style="color:null;">If something happens yet again, it has already happened many times before: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>I'm afraid it's been delayed yet again.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Continually and repeatedly</span></div>
+<div style="padding-left:1em;"><span style="color:darkblue;"><span style="font-weight: bold;">again and again</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">6.</span></span> <span style="font-style: italic; color: green;;">B1</span> <span style="color:null;">repeatedly: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>I've told you again and again not to do that.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Continually and repeatedly</span></div>
+<div style="padding-left:1em;"><span style="color:darkblue;"><span style="font-weight: bold;">all over again</span></span></div>
+<div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">7.</span></span> <span style="font-style: italic; color: green;;">B2</span> <span style="color:null;">If you do something all over again, you start again from the beginning: </span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>It's already taken me two hours - I don't want to have to do it all over again.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Thesaurus</span><span>+</span></span>: <span>&uarr;Continually and repeatedly</span></div>
+<div style="padding-left:1em;"><span style="color:lightgray;">&bull; &bull; &bull;</span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Extra Examples</span></span>:</div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>If you think it's wrong, cross it out and write it again.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>&quot;I never want to see you ever again, &quot; he shouted as he stormed out of the house.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>I'm not going to let him repair my bike again because he made a really bad job of it last time.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>I was very nervous about driving again after the accident.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>If the phone lines are busy, please try again later.</span></span></div>
+<div style="padding-left:2em;"><span style="color:olive;"><span style="text-decoration: underline;">Common mistake</span></span>: <span style="font-weight: bold;">again</span></div>
+<div style="padding-left:3em;"><span style="color:red;"><span style="font-weight: bold;">!</span></span> <span style="font-weight: bold;">Warning: again</span> usually goes directly after the object in a sentence.</div>
+<div style="padding-left:3em;"><span style="color:red;"><span style="font-weight: bold;">!</span></span> Don't say 'do again something', say <span style="font-weight: bold;">do something again</span>:</div>
+<div style="padding-left:3em;"><span style="color:red;"><span style="font-weight: bold;">✗</span></span> <span style="color:grey;" class="secondary-content"><span>I hope you will again visit us.</span></span></div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>I hope you will visit us again.</span></span></div>
+<div style="padding-left:3em;"><span style="color:red;"><span style="font-weight: bold;">!</span></span> If the sentence does not have an object, <span style="font-weight: bold;">again</span> usually goes at the end of the sentence:</div>
+<div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>It's raining again.</span></span></div>
+
+    </div>
+</div>
+</body>
+</html>

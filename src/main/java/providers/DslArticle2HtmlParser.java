@@ -1,13 +1,13 @@
 package providers;
 
 public class DslArticle2HtmlParser {
-    public static String getHtmlArticle(String dslArticle){
+    public static String getHtmlArticle(String dslArticle, String dictionaryName){
         String lines[] = dslArticle.split("\\r?\\n");
         StringBuilder parsedArticle = new StringBuilder();
         for (String line : lines) {
             int firstCharCode = (int)line.charAt(0);
             if(firstCharCode == 32 || firstCharCode == 9){//if line begins with space
-                String convertedText = DslRowParser.parseDslArticleRowToHtmlRow(line);
+                String convertedText = DslRowParser.parseDslArticleRowToHtmlRow(line, dictionaryName);
                 parsedArticle.append(convertedText);
                 parsedArticle.append("\n");
             }else if(!line.trim().isEmpty()){

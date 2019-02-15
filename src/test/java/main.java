@@ -2,6 +2,7 @@ import models.Dictionary;
 import models.Node;
 import models.WordTranslation;
 import org.apache.commons.codec.digest.DigestUtils;
+import providers.DictionariesProvider;
 import providers.DslArticle2HtmlParser;
 import providers.DslRowParser;
 import providers.FileProvider;
@@ -13,45 +14,32 @@ import java.util.Arrays;
 import java.util.List;
 
 public class main {
-    private static List<Dictionary> initializeDictionaries(String[] dictPaths){
-        List<Dictionary> dictionaries = new ArrayList<>();
-        List<String> dictPathsList = Arrays.asList(dictPaths);
-        dictPathsList.forEach(dictPath -> {
-            Dictionary dictionary = new Dictionary(dictPath);
-            if(!dictionary.isDictionaryInitialized()){
-                System.out.println("Failed: " + dictionary.getDictionaryDirectory());
-                System.out.println("---------------------------");
-            }else{
-                dictionaries.add(dictionary);
-            }
+
+    private static List<WordTranslation> getWordTranslations(List<String> wordsToTranslate){
+        List<WordTranslation> wordTranslations = new ArrayList<>();
+        wordsToTranslate.forEach(word -> {
+            WordTranslation wordTranslation = new WordTranslation(word);
+            wordTranslations.add(wordTranslation);
         });
-        return dictionaries;
+        return wordTranslations;
     }
 
     public static void main(String[] args){
-
         String dictPathsArray[] = {
                 "/Users/anatoly/Downloads/DSL Dictionaries/CollinsCobuildEnEn",
                 "/Users/anatoly/Downloads/DSL Dictionaries/CollinsEnEn",
                 "/Users/anatoly/Downloads/DSL Dictionaries/En-En-Oald8.08-2010.dsl",
-                "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu"
+                "/Users/anatoly/Downloads/DSL Dictionaries/LingvoUniversalEnRu",
+                "/Users/anatoly/Downloads/DSL Dictionaries/en-en_CALD4/en-en_CALD4/en-en_CALD4"
         };
+        DictionariesProvider.initializeDictionaries(dictPathsArray);
 
-        List<String> wordsToTranslate = Arrays.asList(new String[]{"worlds", "peace", "against"});
-        List<Dictionary> dictionaries = initializeDictionaries(dictPathsArray);
+        List<String> wordsToTranslate = Arrays.asList(new String[]{"worlds", "peace", "against", "again"});
 
-        List<WordTranslation> wordTranslations = new ArrayList<>();
-        wordsToTranslate.forEach(word -> {
-            WordTranslation wordTranslation = new WordTranslation(word, dictionaries);
-            wordTranslations.add(wordTranslation);
-        });
-
-
+        List<WordTranslation> wordTranslations = getWordTranslations(wordsToTranslate);
         wordTranslations.forEach(wordTranslation -> {
             writeWordTranslationsToFile(wordTranslation);
         });
-
-
 
     }
 

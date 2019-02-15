@@ -8,6 +8,7 @@ public class DslTagParser {
     private String color;
     private String htmlOpenTag;
     private String htmlCloseTag;
+    private boolean externalResourceTag;
 
     private void parseTagContext(){
         String[] tagAttributes = tagContext.substring(1, tagContext.length() - 1).split(" ");
@@ -16,7 +17,6 @@ public class DslTagParser {
             this.color = tagAttributes[1];
         }
         this.setHtmlOpenCloseTags();
-        //System.out.println("tag: " + this.tag + " color: " + this.color);
     }
 
     private void setHtmlOpenCloseTags(){
@@ -38,9 +38,11 @@ public class DslTagParser {
         } else if(this.tag.equalsIgnoreCase("sub")){
             this.htmlOpenTag =  SubTag.getHtmlOpenTagRepresentation();
             this.htmlCloseTag = SubTag.getHtmlCloseTagRepresentation();
-        } else if(this.tag.equalsIgnoreCase("*")){
-            this.htmlOpenTag =  StarTag.getHtmlOpenTagRepresentation();
+        } else if(this.tag.equalsIgnoreCase("*")) {
+            this.htmlOpenTag = StarTag.getHtmlOpenTagRepresentation();
             this.htmlCloseTag = StarTag.getHtmlCloseTagRepresentation();
+        } else if(this.tag.equalsIgnoreCase("s")){  //we get [s] tag content from within the Node because we know resource name only there
+            this.externalResourceTag = true;
         } else {
             this.htmlOpenTag = DslTag.getHtmlOpenTagRepresentation();
             this.htmlCloseTag = DslTag.getHtmlCloseTagRepresentation();
@@ -48,8 +50,13 @@ public class DslTagParser {
     }
 
     public DslTagParser(String tagContext){
+        this.externalResourceTag = false;
         this.tagContext = tagContext;
         parseTagContext();
+    }
+
+    public boolean isExternalResourceTag(){
+        return this.externalResourceTag;
     }
 
     public String getConvertedDsl2HtmlOpenTag(){

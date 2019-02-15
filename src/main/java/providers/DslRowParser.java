@@ -22,8 +22,8 @@ public class DslRowParser {
     }
 
 
-    public static String parseDslArticleRowToHtmlRow(String dslRow){
-        Node parsedNode = DslRowParser.parseArticleRowToNode(dslRow);
+    public static String parseDslArticleRowToHtmlRow(String dslRow, String dictionaryName){
+        Node parsedNode = DslRowParser.parseArticleRowToNode(dslRow, dictionaryName);
         String convertedText = parsedNode.getConvertedNodeText();
         if(convertedText != null){
             convertedText = convertedText.replace("\\", "");
@@ -34,10 +34,10 @@ public class DslRowParser {
 
     }
 
-    private static Node parseArticleRowToNode(String row){
+    private static Node parseArticleRowToNode(String row, String dictionaryName){
         row = row.trim();
         row = StringEscapeUtils.escapeHtml4(row);
-        Node node = new Node();
+        Node node = new Node(dictionaryName);
         while (row.length() > 0){
 
 

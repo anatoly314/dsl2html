@@ -1,5 +1,7 @@
 package models;
 
+import dslTags.STag;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,15 +13,17 @@ public class Node implements NodeInterface {
     private int level;
     private String convertedNodeText;
     private boolean closedNode;
+    private String dictionaryName;
 
-    public Node(){
+    public Node(String dictionaryName){
         this.closedNode = false;
         this.children = new ArrayList<>();
         this.level = 0;
+        this.dictionaryName = dictionaryName;
     }
 
-    public Node(Node parent, DslTagParser dslTagParser){
-        this();
+    private Node(Node parent, DslTagParser dslTagParser, String dictionaryName){
+        this(dictionaryName);
         this.parent = parent;
         this.dslTagParser = dslTagParser;
         this.level = parent.getLevel() + 1;
@@ -30,7 +34,7 @@ public class Node implements NodeInterface {
      * @return
      */
     public Node getChild(DslTagParser tag){
-        Node node = new Node(this, tag);
+        Node node = new Node(this, tag, this.dictionaryName);
         this.children.add(node);
         this.currentNodeText = null; //reset currentNodeText
         return node;
@@ -69,9 +73,12 @@ public class Node implements NodeInterface {
             }
         }
 
-        if(this.dslTagParser != null){
+        if(this.dslTagParser != null && !this.dslTagParser.isExternalResourceTag()){
             convertedNodeTextBuilder.insert(0, this.dslTagParser.getConvertedDsl2HtmlOpenTag());
             convertedNodeTextBuilder.append(this.dslTagParser.getConvertedDsl2HtmlCloseTag());
+        }else if(this.dslTagParser != null && this.dslTagParser.isExternalResourceTag()){   //[s] tag
+            String resourceName = convertedNodeTextBuilder.toString();
+            convertedNodeTextBuilder = new StringBuilder(STag.getExternalResource(resourceName, dictionaryName));
         }
 
         this.closedNode = true;
