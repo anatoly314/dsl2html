@@ -1,0 +1,219 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>against</title>
+    <script>
+        function toggleSecondaryContent(event){
+            var articleId = event.path[2].getAttribute("id");
+            var elements = document.getElementById(articleId).getElementsByClassName('secondary-content');
+            for (var i = 0; i < elements.length; i++) {
+                var element = elements[i];
+                var displayProperty = element.style.display;
+                if(displayProperty === "" || displayProperty === "none"){
+                    element.style.display = 'initial';
+                }else {
+                    element.style.display = 'none';
+                }
+            }
+
+            var buttonElement = document.getElementById(articleId).getElementsByTagName('button')[0];
+            if(buttonElement.className.indexOf("show-secondary-content-button") >= 0){
+                buttonElement.className = "hide-secondary-content-button";
+            }else{
+                buttonElement.className = "show-secondary-content-button";
+            }
+
+        }
+    </script>
+    <style>
+        h3{
+            display: inline;
+        }
+        button{
+            background-repeat: no-repeat;
+            width: 1rem;
+            height: 1rem;
+            background-size: cover;
+            background-position: center;
+            outline: none;
+            display: inline;
+        }
+
+        .secondary-content{
+            display:none;
+        }
+
+        .hide-secondary-content-button {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJtaW51cy1zcXVhcmUiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1taW51cy1zcXVhcmUgZmEtdy0xNCIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik00MDAgMzJINDhDMjEuNSAzMiAwIDUzLjUgMCA4MHYzNTJjMCAyNi41IDIxLjUgNDggNDggNDhoMzUyYzI2LjUgMCA0OC0yMS41IDQ4LTQ4VjgwYzAtMjYuNS0yMS41LTQ4LTQ4LTQ4ek05MiAyOTZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDI2NGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTZjMCA2LjYtNS40IDEyLTEyIDEySDkyeiI+PC9wYXRoPjwvc3ZnPg==);
+        }
+
+        .show-secondary-content-button {
+            background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJwbHVzLXNxdWFyZSIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXBsdXMtc3F1YXJlIGZhLXctMTQiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNDQ4IDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDAwIDMySDQ4QzIxLjUgMzIgMCA1My41IDAgODB2MzUyYzAgMjYuNSAyMS41IDQ4IDQ4IDQ4aDM1MmMyNi41IDAgNDgtMjEuNSA0OC00OFY4MGMwLTI2LjUtMjEuNS00OC00OC00OHptLTMyIDI1MmMwIDYuNi01LjQgMTItMTIgMTJoLTkydjkyYzAgNi42LTUuNCAxMi0xMiAxMmgtNTZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtOTJIOTJjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDkydi05MmMwLTYuNiA1LjQtMTIgMTItMTJoNTZjNi42IDAgMTIgNS40IDEyIDEydjkyaDkyYzYuNiAwIDEyIDUuNCAxMiAxMnY1NnoiPjwvcGF0aD48L3N2Zz4=);
+        }
+
+        .dictionary-name{
+            border: dotted 1px grey;
+            padding: 5px;
+            border-radius: 3px;
+            margin: 1rem 0 1rem 0;
+        }
+
+        .dictionary-title{
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="d7621ccd62cd05d44b3ef6fdd3cc0990a1ba1790">
+    <div class="dictionary-name">
+        From ﻿	"LingvoUniversal (En-Ru)"
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>against</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        [<span>ə'gen(t)st, ə'geɪn(t)st</span>] <span style="font-style: italic; color: green;;">брит.</span> <span>against.wav</span> / <span style="font-style: italic; color: green;;">амер.</span> <span>313.wav</span>
+<span style="font-style: italic; color: green;;">предл.</span>
+<div style="padding-left:1em;">1) <span style="color:null;">= over against</span> <span>против, лицом к, перед <span><span style="color:null;">(указывает на противоположное местонахождение)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>In a direct line against them stood the three witches.</span> &mdash; Против них в ряд стояли три колдуньи.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>The gate has been shut against her.</span> &mdash; Ворота захлопнулись прямо перед ней.</span></span></div>
+<div style="padding-left:1em;">2) <span>у, рядом, по соседству <span><span style="color:null;">(указывает на местоположение около чего-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>I met him against the pond.</span> &mdash; Я встретил его у пруда.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>Three of their ships lay against the walls.</span> &mdash; Три их корабля встали под стенами города.</span></span></div>
+<div style="padding-left:1em;">3) <span>о, в, к <span><span style="color:null;">(указывает на соприкосновение с чем-л.; столкновение в результате движения)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>Till I break my ship against rocks.</span> &mdash; Пока мой корабль не разобьётся о скалы.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>The sharp sleet is pattering against the window-panes.</span> &mdash; Злая пурга стучится в ставни.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>I was jostled against him in the crowd.</span> &mdash; Меня прижало к нему в толпе.</span></span></div>
+<div style="padding-left:1em;">4) <span>о, к, на <span><span style="color:null;">(указывает на опору, контакт, соприкосновение с чем-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>Lean against my shoulder.</span> &mdash; Прислонись к моему плечу.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>He pressed his hands against his forehead.</span> &mdash; Он прижал ладони ко лбу.</span></span></div>
+<div style="padding-left:1em;">5) <span>на (фоне) <span><span style="color:null;">(указывает на фон для какого-л. предмета)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>The picture stands out better against the dark wall.</span> &mdash; На фоне тёмной стены эта картина смотрится лучше.</span></span></div>
+<div style="padding-left:1em;">6) <span>на, против <span><span style="color:null;">(указывает на движение в противоположном направлении)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>against the hair / the grain</span> &mdash; против шерсти</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>to row against the current</span> &mdash; грести против течения</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>He ran furiously up against a hill.</span> &mdash; Как бешеный, он взбежал на холм.</span></span></div>
+<div style="padding-left:1em;">7) <span>вопреки, против</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>She actually went with them, though much against her heart.</span> &mdash; Она всё же пошла с ними, хотя и против собственного желания.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>May, against common conjectures, will be no very busy month.</span> &mdash; В мае, вопреки тому, что говорят многие, завала на работе не будет.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>It is against my general notions to trust to writing.</span> &mdash; Доверять написанному противоречит моим основным представлениям.</span></span></div>
+<div style="padding-left:1em;">8) <span>против, с <span><span style="color:null;">(указывает на противодействие чему-л., несогласие с чем-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>Fight against them that fight against me.</span> &mdash; Сражайтесь с теми, кто сражается против меня.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>The whole gentry were against him.</span> &mdash; Всё местное дворянство выступало против него.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>Passengers are cautioned against crossing the line.</span> &mdash; Пассажиров предупреждают, что переходить через железнодорожные пути опасно.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>The Law against Witches does not prove there be any.</span> &mdash; Наличие закона против ведьм не означает, что они есть.</span></span></div>
+<div style="padding-left:1em;">9) <span>с <span><span style="color:null;">(указывает на состязание, соревнование, конкуренцию с кем-л., чем-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>I always felt as if I was riding a race against time.</span> &mdash; Я всегда чувствовал, будто бегу наперегонки со временем.</span></span></div>
+<div style="padding-left:1em;">10) <span>от <span><span style="color:null;">(указывает на защиту, предохранение от кого-л., чего-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>to protect against the cold</span> &mdash; защищать от холода</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>I am proof against their enmity.</span> &mdash; Я защищена от их недружелюбия.</span></span></div>
+<div style="padding-left:1em;">11) <span>в обмен на, в счёт, по <span><span style="color:null;">(указывает на получение в обмен на что-л., в счёт чего-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>When men used to exchange wheat against bullocks.</span> &mdash; Когда люди меняли зерно на волов.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content">- <span>against the contract</span></span></div>
+<div style="padding-left:1em;">12) <span>против, по сравнению с <span><span style="color:null;">(указывает на противопоставление, сравнение)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>actual results against the plan</span> &mdash; фактические результаты по сравнению с планом</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content">- <span>weigh smth. against smth.</span></span></div>
+<div style="padding-left:1em;">13) <span>против <span><span style="color:null;">(о ставках в споре и играх типа тотализатора)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>I long ago came to the conclusion that all life is six to five against.</span> &mdash; Я давно понял, что в этой жизни все ставки - шесть к пяти.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>As opposition to Mrs Thatcher mounts, I hear that the Commons' unofficial bookie offers odds of 7-4 against her still being prime minister by the end of next year.</span> &mdash; По мере того, как оппозиция г-же Тэтчер растёт, неофициальный букмекер Палаты общин, как я слышал, предлагает ставки 7 к 4 против того, что она сохранит свой пост до конца следующего года.</span></span></div>
+<div style="padding-left:1em;">14) <span>к, для, на <span><span style="color:null;">(указывает на подготовку к чему-л.)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>I made some additions to my book against the next edition.</span> &mdash; Для следующего издания моей книги я сделал к ней некоторые дополнения.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content">- <span>against a rainy day</span></span></div>
+<div style="padding-left:1em;">15) <span>к <span><span style="color:null;">(указывает на срок завершения действия)</span></span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>against the end of the month</span> &mdash; к концу месяца</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>When the Queen of Sheba came to visit Solomon, he had built, against her arrival, a palace.</span> &mdash; Когда царица Савская посетила Соломона, он построил к её прибытию дворец.</span></span></div>
+<div style="padding-left:1em;">16) <span>по отношению, в отношении к</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>The legal rights of subjects as against each other and the constitutional rights of subjects against the government.</span> &mdash; Юридические права подданных по отношению друг к другу и конституционные права подданных по отношению к правительству.</span></span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>Hope is against the holy ghost.</span> &mdash; Надежда пребывает в духе святом.</span></span></div>
+
+    </div>
+</div><div id="13e9e6c4ca4535bc9eaca422190d0fc2945d3643">
+    <div class="dictionary-name">
+        From ﻿	"Collins (En-En)"
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>against</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        [əˈgɛnst, əˈgeınst]
+<div style="padding-left:1em;"><span style="font-style: italic; color: green;;">prep</span></div>
+<div style="padding-left:1em;">1) <span>opposed to; in conflict or disagreement with</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>they fought against the legislation</span></span></div>
+<div style="padding-left:1em;">2) <span>standing or leaning beside or in front of</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>a ladder against the wall</span></span></div>
+<div style="padding-left:1em;">3) <span>coming in contact with</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>the branches of a tree brushed against the bus</span></span></div>
+<div style="padding-left:1em;">4) <span>in contrast to</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>silhouettes are outlines against a light background</span></span></div>
+<div style="padding-left:1em;">5) <span>having an adverse or unfavourable effect on</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>the economic system works against small independent companies</span></span></div>
+<div style="padding-left:1em;">6) <span>as a protection from or means of defence from the adverse effects of</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>a safeguard against contaminated water</span></span></div>
+<div style="padding-left:1em;">7) <span>in exchange for or in return for</span></div>
+<div style="padding-left:1em;">8) <span><span style="color:null;"><span><span style="color:null;">now rare</span></span></span> in preparation for</span></div>
+<div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span>he gave them warm clothing against their journey through the night</span></span></div>
+<div style="padding-left:1em;">9)</div>
+<div style="padding-left:2em;">- <span>as against</span></div>
+<div style="padding-left:1em;"><span style="color:grey;" class="secondary-content">&bull;</span></div>
+<div><span style="color:grey;" class="secondary-content"><span style="font-weight: bold;">Etymology:</span></span></div>
+<div><span style="font-style: italic; color: green;;"><span style="color:grey;" class="secondary-content">C12</span> <span>ageines,</span> <span style="color:null;">from <span>again</span>, <span style="color:null;">ageyn</span>,</span> <span style="color:null;">etc.</span>, <span style="color:null;">AGAIN + <span>-es</span> genitive ending</span>; <span style="color:null;">the spelling with <span>-t</span></span> <span style="color:null;">(<span style="font-style: italic; color: green;;">C16</span>)</span> was probably due to confusion with superlatives ending in <span>-st</span></span></div>
+
+
+    </div>
+</div><div id="50bdf6af181050f36d17775a219b97a1b2f314ce">
+    <div class="dictionary-name">
+        From ﻿ "Oxford Advanced Learners Dictionary 8th Ed."
+    </div>
+
+    <!--TITLE WITH BUTTON-->
+    <div class="dictionary-title">
+        <h3>against</h3>
+        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+    </div> <!--TITLE WITH BUTTON END-->
+
+    <div>
+        <div style="padding-left:0em;"><span style="color:darkgray;"> </span><span style="font-weight: bold;"><span style="color:red;">against</span></span> <span style="font-style: italic; color: green;;">BrE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡenst]</span> <span>z_against__gb_1.wav</span> <span style="font-style: italic; color: green;;">NAmE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡenst]</span> <span>z_against__us_1.wav</span> <span style="font-style: italic; color: green;;">BrE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡeɪnst]</span> <span>z_against__gb_2.wav</span> <span style="font-style: italic; color: green;;">NAmE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[əˈɡeɪnst]</span> <span>z_against__us_2.wav</span> <span style="color:orange;"> preposition</span></div>
+<div style="padding-left:1em;"><span style="color:darkgray;">&nbsp;</span>For the special uses of  <span style="color:darkslategray;"><span style="font-weight: bold;">against </span></span> in phrasal verbs, look at the entries for the verbs. For example  <span style="color:darkslategray;"><span style="font-weight: bold;">count against sb </span></span> is in the phrasal verb section at  <span style="color:darkslategray;"><span style="font-weight: bold;">count</span></span>.</div>
+<div style="padding-left:1em;"><span style="color:red;"><span style="font-weight: bold;">1.</span></span> opposing or disagreeing with sb/sth</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">the fight against terrorism </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content"> We're playing against the league champions next week. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content"> We were rowing against the current. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">That's against the law. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">She was forced to marry against her will. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">Are you for or against the death penalty? </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">She is against seeing  </span></span><span style="color:darkslategray;">(= does not want to see) </span><span><span style="color:grey;" class="secondary-content"> him. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">I'd advise you against doing that. </span></span></div>
+<div style="padding-left:1em;"><span style="color:red;"><span style="font-weight: bold;">2.</span></span> not to the advantage or favour of sb/sth</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content"> The evidence is against him. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content"> Her age is against her. </span></span></div>
+<div style="padding-left:2em;"><span style="color:darkcyan;"><span style="font-weight: bold;"> compare </span></span> &uarr;&lt;&lt;for&gt;&gt; <span style="color:darkgray;"> </span><span style="color:rosybrown;"><sub>prep. </sub></span><span style="color:darkgray;"> (</span><span>7</span><span style="color:darkgray;">)</span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">3.</span></span> close to, touching or hitting sb/sth</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">Put the piano there, against the wall. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">The rain beat against the windows. </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">4.</span></span> in order to prevent sth from happening or to reduce the damage caused by sth</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">an injection against rabies </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">They took precautions against fire. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">Are we insured against theft? </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">5.</span></span> with sth in the background, as a contrast</div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">His red clothes stood out clearly against the snow. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> (</span><span style="color:rosybrown;">figurative</span><span style="color:darkgray;">) </span><span><span style="color:grey;" class="secondary-content">The love story unfolds against a background of civil war. </span></span></div>
+<div style="padding-left:1em;"><span style="color:darkmagenta;"><span style="font-weight: bold;">6.</span></span> <span style="color:darkslategray;">used when you are comparing two things </span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">You must weigh the benefits against the cost. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">Check your receipts against the statement. </span></span></div>
+<div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span><span style="color:grey;" class="secondary-content">What's the rate of exchange against the dollar? </span></span></div>
+<div style="padding-left:2em;"><span style="color:darkcyan;"><span style="font-weight: bold;"> see </span></span> <span style="color:dimgray;">as against sth</span><span style="color:darkcyan;"><span style="font-weight: bold;"> at </span></span> &uarr;&lt;&lt;as&gt;&gt; <span style="color:darkgray;"> </span><span style="color:rosybrown;"><sub>conj.</sub></span><span style="color:darkgray;">, </span><span style="color:dimgray;">the cards/odds are stacked against you</span><span style="color:darkcyan;"><span style="font-weight: bold;"> at </span></span> &uarr;&lt;&lt;stacked&gt;&gt; <div style="padding-left:3em;">&nbsp;</div></div>
+<div style="padding-left:3em;"><span style="color:darkslategray;"><span style="text-decoration: underline;">Word&nbsp;Origin:</span></span></div>
+<div style="padding-left:3em;"> <span style="color:rosybrown;">[</span><span style="color:darkslategray;"><span style="font-weight: bold;">against</span></span><span style="color:rosybrown;">]</span> <span style="color:darkgray;"> </span><span style="color:darkslategray;">Middle English</span><span style="color:dimgray;">: from  </span>&uarr;&lt;&lt;again&gt;&gt; <span style="color:dimgray;"> +  </span><span style="color:darkslategray;">-s </span><span style="color:dimgray;"> (adverbial genitive) +  </span><span style="color:darkslategray;">-t </span><span style="color:dimgray;"> probably by association with superlatives (as in  </span><span style="color:darkslategray;">amongst</span><span style="color:dimgray;">). </span></div>
+
+    </div>
+</div>
+</body>
+</html>

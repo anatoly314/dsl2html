@@ -52,7 +52,7 @@ public class FileProvider {
                     }
                     if(parsingArticleContent && (line.isEmpty() || !Character.isWhitespace(line.charAt(0)))){  //reached end of current article
                         articleLastLineReached = true;
-                    }else{  //we in the middle parsing current article's titles or article's body
+                    }else if(parsingArticleContent){  //we in the middle of parsing current article's body
                         text.append(line);
                         text.append("\n");
                     }

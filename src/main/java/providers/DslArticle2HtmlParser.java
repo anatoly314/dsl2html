@@ -1,13 +1,8 @@
-import providers.DslRowParser;
-import providers.FileProvider;
+package providers;
 
-public class main_test {
-    public static void main(String[] args){
-
-        String htmlTemplate = FileProvider.getFileByFileName("html-template/single-article-template.html");
-
-        String fileText = FileProvider.getFileByFileName("single-article.txt");
-        String lines[] = fileText.split("\\r?\\n");
+public class DslArticle2HtmlParser {
+    public static String getHtmlArticle(String dslArticle){
+        String lines[] = dslArticle.split("\\r?\\n");
         StringBuilder parsedArticle = new StringBuilder();
         for (String line : lines) {
             int firstCharCode = (int)line.charAt(0);
@@ -22,8 +17,6 @@ public class main_test {
 
         }
         String outputArticle = parsedArticle.toString();
-        htmlTemplate = htmlTemplate.replace("{{CONTENT}}", outputArticle);
-        FileProvider.saveToFile("article-output.html", htmlTemplate);
-
+        return outputArticle;
     }
 }
