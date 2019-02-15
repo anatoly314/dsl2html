@@ -14,8 +14,10 @@ public class Node implements NodeInterface {
     private String convertedNodeText;
     private boolean closedNode;
     private String dictionaryName;
+    private boolean rowWithoutDslTags;  //some dictionaries have row without dsl tags and need to be treat accordingly
 
     public Node(String dictionaryName){
+        this.rowWithoutDslTags = true;
         this.closedNode = false;
         this.children = new ArrayList<>();
         this.level = 0;
@@ -34,6 +36,7 @@ public class Node implements NodeInterface {
      * @return
      */
     public Node getChild(DslTagParser tag){
+        this.rowWithoutDslTags = false; //if we go deeper it means that we found at least one nested tag
         Node node = new Node(this, tag, this.dictionaryName);
         this.children.add(node);
         this.currentNodeText = null; //reset currentNodeText
@@ -90,6 +93,9 @@ public class Node implements NodeInterface {
     }
 
     public String getConvertedNodeText(){
+        if(this.rowWithoutDslTags && this.level == 0){  //if top Node and it hasn't DSL tag at all we manually enclose it by <div> element
+            return "<div>" + this.convertedNodeText + "</div>";
+        }
         return this.convertedNodeText;
     }
 }
