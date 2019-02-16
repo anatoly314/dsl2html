@@ -15,7 +15,7 @@ public class STag {
                 audioResourceFoundHtmlTag = audioResourceFoundHtmlTag.replace("{{BASE64_CONTENT}}", base64Resource);
                 return audioResourceFoundHtmlTag;
             }else if(resourceName.endsWith(".wav") && base64Resource == null){
-                String audioResourceNotFoundHtmlTag = "<i class=\"fa fa-volume-up resource-not-found\" \"></i><sup>not found</sup>";
+                String audioResourceNotFoundHtmlTag = "<i class=\"fa fa-volume-up resource-not-found\"></i><sup>not found</sup>";
                 return audioResourceNotFoundHtmlTag;
             }
 
