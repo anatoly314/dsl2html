@@ -2,6 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <title>peace</title>
+
     <script>
         function toggleSecondaryContent(event){
             var articleId = event.path[2].getAttribute("id");
@@ -16,39 +17,68 @@
                 }
             }
 
-            var buttonElement = document.getElementById(articleId).getElementsByTagName('button')[0];
-            if(buttonElement.className.indexOf("show-secondary-content-button") >= 0){
-                buttonElement.className = "hide-secondary-content-button";
+            var buttonElement = document.getElementById(articleId).getElementsByClassName('secondary-content-button')[0];
+            if(buttonElement.className.indexOf("fa-plus-square") >= 0){
+                buttonElement.className = buttonElement.className.replace("fa-plus-square", "fa-minus-square");
             }else{
-                buttonElement.className = "show-secondary-content-button";
+                buttonElement.className = buttonElement.className.replace("fa-minus-square", "fa-plus-square");
             }
 
         }
+
+        function playAudio(base64file) {
+            var snd = new Audio("data:audio/wav;base64," + base64file);
+            snd.play();
+        }
     </script>
     <style>
-        h3{
-            display: inline;
+        @font-face {
+            font-family: 'FontAwesomeCustomized';
+            font-weight: 400;
+            font-style: normal;
+            src: url(data:application/font-woff;base64,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) format('woff')
         }
-        button{
-            background-repeat: no-repeat;
-            width: 1rem;
-            height: 1rem;
-            background-size: cover;
-            background-position: center;
-            outline: none;
+
+        .fa {
+            /* use !important to prevent issues with browser extensions that change fonts */
+            font-family: 'FontAwesomeCustomized' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+
+            /* Better Font Rendering =========== */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .secondary-content-button{
+            vertical-align: middle;
+        }
+
+        .fa-volume-up:before {
+            content: "\e900";
+        }
+
+        .fa-minus-square:before {
+            content: "\e901";
+        }
+
+        .fa-plus-square:before {
+            content: "\e902";
+        }
+
+        body{
+            background-color:#fefdeb;
+        }
+        h3{
             display: inline;
         }
 
         .secondary-content{
             display:none;
-        }
-
-        .hide-secondary-content-button {
-            background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJtaW51cy1zcXVhcmUiIGNsYXNzPSJzdmctaW5saW5lLS1mYSBmYS1taW51cy1zcXVhcmUgZmEtdy0xNCIgcm9sZT0iaW1nIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48cGF0aCBmaWxsPSJjdXJyZW50Q29sb3IiIGQ9Ik00MDAgMzJINDhDMjEuNSAzMiAwIDUzLjUgMCA4MHYzNTJjMCAyNi41IDIxLjUgNDggNDggNDhoMzUyYzI2LjUgMCA0OC0yMS41IDQ4LTQ4VjgwYzAtMjYuNS0yMS41LTQ4LTQ4LTQ4ek05MiAyOTZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDI2NGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTZjMCA2LjYtNS40IDEyLTEyIDEySDkyeiI+PC9wYXRoPjwvc3ZnPg==);
-        }
-
-        .show-secondary-content-button {
-            background-image: url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJwbHVzLXNxdWFyZSIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLXBsdXMtc3F1YXJlIGZhLXctMTQiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNDQ4IDUxMiI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNNDAwIDMySDQ4QzIxLjUgMzIgMCA1My41IDAgODB2MzUyYzAgMjYuNSAyMS41IDQ4IDQ4IDQ4aDM1MmMyNi41IDAgNDgtMjEuNSA0OC00OFY4MGMwLTI2LjUtMjEuNS00OC00OC00OHptLTMyIDI1MmMwIDYuNi01LjQgMTItMTIgMTJoLTkydjkyYzAgNi42LTUuNCAxMi0xMiAxMmgtNTZjLTYuNiAwLTEyLTUuNC0xMi0xMnYtOTJIOTJjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNTZjMC02LjYgNS40LTEyIDEyLTEyaDkydi05MmMwLTYuNiA1LjQtMTIgMTItMTJoNTZjNi42IDAgMTIgNS40IDEyIDEydjkyaDkyYzYuNiAwIDEyIDUuNCAxMiAxMnY1NnoiPjwvcGF0aD48L3N2Zz4=);
         }
 
         .dictionary-name{
@@ -61,7 +91,13 @@
         .dictionary-title{
             margin-bottom: 1rem;
         }
+
+        .resource-not-found{
+            color: darkred;
+            padding-right: 5px;
+        }
     </style>
+
 </head>
 <body>
     <div id="d7621ccd62cd05d44b3ef6fdd3cc0990a1ba1790">
@@ -72,11 +108,11 @@
     <!--TITLE WITH BUTTON-->
     <div class="dictionary-title">
         <h3>peace</h3>
-        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+        <i class="secondary-content-button fa fa-plus-square" onclick="toggleSecondaryContent(event)"></i>
     </div> <!--TITLE WITH BUTTON END-->
 
     <div>
-        [<span>piːs</span>] <span style="font-style: italic; color: green;;">брит.</span> <span>External Resource</span> / <span style="font-style: italic; color: green;;">амер.</span> <span>External Resource</span>
+        [<span>piːs</span>] <span style="font-style: italic; color: green;;">брит.</span> <i class="fa fa-volume-up resource-not-found" "></i><sup>not found</sup> / <span style="font-style: italic; color: green;;">амер.</span> <i class="fa fa-volume-up resource-not-found" "></i><sup>not found</sup>
 <span style="font-style: italic; color: green;;">сущ.</span>
 <div style="padding-left:1em;">1) <span>мир</span></div>
 <div style="padding-left:2em;"><span style="color:grey;" class="secondary-content"><span><span>war and peace</span> &mdash; война и мир</span></span></div>
@@ -140,7 +176,7 @@
     <!--TITLE WITH BUTTON-->
     <div class="dictionary-title">
         <h3>peace</h3>
-        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+        <i class="secondary-content-button fa fa-plus-square" onclick="toggleSecondaryContent(event)"></i>
     </div> <!--TITLE WITH BUTTON END-->
 
     <div>
@@ -184,11 +220,11 @@
     <!--TITLE WITH BUTTON-->
     <div class="dictionary-title">
         <h3>peace</h3>
-        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+        <i class="secondary-content-button fa fa-plus-square" onclick="toggleSecondaryContent(event)"></i>
     </div> <!--TITLE WITH BUTTON END-->
 
     <div>
-        <div style="padding-left:0em;"><span style="color:darkgray;"> </span><span style="font-weight: bold;"><span style="color:red;">peace</span></span> <span style="font-style: italic; color: green;;">BrE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[piːs]</span> <span>External Resource</span> <span style="font-style: italic; color: green;;">NAmE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[piːs]</span> <span>External Resource</span> <span style="color:orange;"> noun</span></div>
+        <div style="padding-left:0em;"><span style="color:darkgray;"> </span><span style="font-weight: bold;"><span style="color:red;">peace</span></span> <span style="font-style: italic; color: green;;">BrE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[piːs]</span> <i class="fa fa-volume-up resource-not-found" "></i><sup>not found</sup> <span style="font-style: italic; color: green;;">NAmE</span> <span style="color:darkgray;"> </span><span style="color:darkcyan;">[piːs]</span> <i class="fa fa-volume-up resource-not-found" "></i><sup>not found</sup> <span style="color:orange;"> noun</span></div>
 <div style="padding-left:1em;"><span style="color:red;"><span style="font-weight: bold;">1.</span></span> <span style="color:orangered;">uncountable</span><span style="color:darkgray;">, </span><span style="color:orangered;">singular</span> <span style="color:darkgray;"> </span>a situation or a period of time in which there is no war or violence in a country or an area</div>
 <div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span><span style="color:grey;" class="secondary-content">war and peace </span></span></div>
 <div style="padding-left:2em;"><span><span style="color:grey;" class="secondary-content">&bull; </span></span><span style="color:darkgray;"> </span><span style="font-weight: bold;"><span style="color:darkslategray;">peace talks/negotiations </span></span></div>
@@ -352,11 +388,11 @@
     <!--TITLE WITH BUTTON-->
     <div class="dictionary-title">
         <h3>peace</h3>
-        <button onclick="toggleSecondaryContent(event)" class="show-secondary-content-button"/>
+        <i class="secondary-content-button fa fa-plus-square" onclick="toggleSecondaryContent(event)"></i>
     </div> <!--TITLE WITH BUTTON END-->
 
     <div>
-        <div style="padding-left:1em;">&mdash;<span style="color:blue;"><span style="font-weight: bold;">peace</span></span> <span style="font-style: italic; color: green;;">UK</span> <span>External Resource</span> <span style="font-style: italic; color: green;;">US</span> <span>External Resource</span> /piːs/</div>
+        <div style="padding-left:1em;">&mdash;<span style="color:blue;"><span style="font-weight: bold;">peace</span></span> <span style="font-style: italic; color: green;;">UK</span> <i class="fa fa-volume-up resource-not-found" "></i><sup>not found</sup> <span style="font-style: italic; color: green;;">US</span> <i class="fa fa-volume-up" onclick="playAudio('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vl3pTaa5TwI0toTzO2MqGhxigky9tgmIgDNW1sZx3yTcV0CDA1LO7rOLUGHGZjVjMSDMuBsgzGdR2DChJgRy5oeue0UwT+tdLwj/2xXidiVXT9p9ah4EAzUVDVIVyETgCJKMwNSCLUrkV8l69iILLnWJilgBgKTFKLatChZWRYsFbN0CFUBUm2lI9m1oYUAlqTKsY+GtIMOFEosVcjgXYoq6t1Q10v/7UsSCgwtc9z5npM1BYp9njYSNodVMQU1FMy45Ni4xVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTEFNRTMuOTYuMVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//tSxIaDyiSvIiwkbQgAADSAAAAEVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy45Ni4xVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/+1LEu4PAAAGkAAAAIAAANIAAAARVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/7UsT/g8AAAaQAAAAgAAA0gAAABFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTElTVEoAAABJTkZPSUNPUCgAAABXYXZlTVAzIHYyLjMgqTE5OTktMjAwNCBieSBQZXRlciBMdWlqZXIASVNGVA0AAABXYXZlTVAzIHYyLjMAAA==')"></i> /piːs/</div>
 <div style="padding-left:1em;"><span style="color:crimson;"><span style="font-weight: bold;">Ⅰ.</span></span> <span style="font-style: italic; color: green;;">noun</span> [<span style="font-style: italic; color: green;;">U</span>] <span style="color:mediumvioletred;"><span style="font-weight: bold;">(CALM)</span></span></div>
 <div style="padding-left:2em;"><span style="color:darkred;"><span style="font-weight: bold;">▸</span></span> <span style="font-style: italic; color: green;;">B1</span> <span style="color:null;">the state of not being interrupted or annoyed by worry, problems, noise, or unwanted actions: </span></div>
 <div style="padding-left:3em;"><span style="color:grey;" class="secondary-content">&raquo; <span>You'll need peace <span style="font-weight: bold;">and quiet</span> to study.</span></span></div>
