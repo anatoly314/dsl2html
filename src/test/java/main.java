@@ -34,7 +34,7 @@ public class main {
         };
         DictionariesProvider.initializeDictionaries(dictPathsArray);
 
-        List<String> wordsToTranslate = Arrays.asList(new String[]{"worlds", "peace", "against", "again"});
+        List<String> wordsToTranslate = Arrays.asList(new String[]{"angel","peace","world","brother"});
 
         List<WordTranslation> wordTranslations = getWordTranslations(wordsToTranslate);
         wordTranslations.forEach(wordTranslation -> {

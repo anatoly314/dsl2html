@@ -63,7 +63,11 @@ public class Node implements NodeInterface {
         return this.closedNode;
     }
     public Node getParent(){
-        return this.parent;
+        if(this.parent != null){
+            return this.parent;
+        }else {
+            return this;
+        }
     }
 
     public void closeNode(){
