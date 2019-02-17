@@ -23,6 +23,10 @@ public class main {
 }
 ````
 
+## TODO!!!
+- Not all DSL specification implemented yet. It supports right now only subset of DSL tags.
+Meanwhile it's enough to get to work with it.
+
 
 ## Used resources
 1. Font Awesome customized by: [https://icomoon.io](https://icomoon.io)
