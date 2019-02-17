@@ -1,6 +1,11 @@
 #  DSL to HTML parser
 
 -----------------------
+## Description
+I wrote this small library to export/get DSL articles as `*.html` content. To read more about **DSL** format use the following resources:
+- English: http://lingvo.helpmax.net/en/troubleshooting/dsl-compiler/dsl-dictionary-structure/
+- Russian (much more comprehended): https://anatoly314.github.io/dsl-manual/
+
 ## How to use:
 - Example how to save translation result as `*.html` files:
 
