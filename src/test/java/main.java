@@ -1,19 +1,4 @@
 import entrypoints.Dsl2Html;
-import models.Dictionary;
-import models.Node;
-import models.WordTranslation;
-import org.apache.commons.codec.digest.DigestUtils;
-import providers.DictionariesProvider;
-import providers.DslArticle2HtmlParser;
-import providers.DslRowParser;
-import providers.FileProvider;
-
-import java.io.IOException;
-import java.sql.Struct;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class main {
 
     public static void main(String[] args){
