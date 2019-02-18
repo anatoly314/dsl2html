@@ -1,4 +1,7 @@
 import entrypoints.Dsl2Html;
+
+import java.util.Map;
+
 public class main {
 
     public static void main(String[] args){
@@ -12,6 +15,7 @@ public class main {
 
         String[] wordsToTranslate = {"angel","peace","world","brother"};
         String outputDirectoryPath = "test-output";
-        Dsl2Html.saveTranslationsToFiles(dictPathsArray, wordsToTranslate, outputDirectoryPath);
+//        Dsl2Html.saveTranslationsToFiles(dictPathsArray, wordsToTranslate, outputDirectoryPath);
+        Map<String, String> articles = Dsl2Html.getTranslationsAsDictionary(dictPathsArray, wordsToTranslate);
     }
 }

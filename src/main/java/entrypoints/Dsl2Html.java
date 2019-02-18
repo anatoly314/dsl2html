@@ -5,9 +5,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import providers.DictionariesProvider;
 import providers.FileProvider;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Dsl2Html {
 
@@ -31,6 +29,12 @@ public class Dsl2Html {
     }
 
     private static void writeWordTranslationsToFile(WordTranslation wordTranslation, String outputDirectoryPath){
+        String articleTitle = wordTranslation.getSourceWordLemmatized();
+        String outputHtmlArticle = getOutputHtmlArticle(wordTranslation);
+        FileProvider.saveToFile(outputDirectoryPath + "/" + articleTitle + ".html", outputHtmlArticle);
+    }
+
+    private static String getOutputHtmlArticle(WordTranslation wordTranslation){
         String articleContainer = FileProvider.getFileByFileName("html-template/article-container.html");
         String articleTitle = wordTranslation.getSourceWordLemmatized();
         StringBuilder multipleArticles = new StringBuilder();
@@ -46,7 +50,7 @@ public class Dsl2Html {
         String articlesTemplate = FileProvider.getFileByFileName("html-template/multiple-articles-template.html");
         articlesTemplate = articlesTemplate.replace("{{ARTICLE_TITLE}}", articleTitle);
         articlesTemplate = articlesTemplate.replace("{{ARTICLES_CONTENT}}", multipleArticles.toString());
-        FileProvider.saveToFile(outputDirectoryPath + "/" + articleTitle + ".html", articlesTemplate);
+        return articlesTemplate;
     }
 
     public static void saveTranslationsToFiles(String[] pathToDictionaries, String[] wordsToTranslate, String outputDirectoryPath){
@@ -55,5 +59,17 @@ public class Dsl2Html {
         wordTranslations.forEach(wordTranslation -> {
             writeWordTranslationsToFile(wordTranslation, outputDirectoryPath);
         });
+    }
+
+    public static Map<String, String> getTranslationsAsDictionary(String[] pathToDictionaries, String[] wordsToTranslate){
+        DictionariesProvider.initializeDictionaries(pathToDictionaries);
+        List<WordTranslation> wordTranslations = getWordTranslations(wordsToTranslate);
+        Map<String, String> result = new HashMap<>();
+        wordTranslations.forEach(wordTranslation -> {
+            String translatedWord = wordTranslation.getSourceWordLemmatized();
+            String htmlArticle = getOutputHtmlArticle(wordTranslation);
+            result.put(translatedWord, htmlArticle);
+        });
+        return result;
     }
 }
