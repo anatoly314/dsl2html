@@ -1,5 +1,7 @@
 package entrypoints;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import models.WordTranslation;
 import org.apache.commons.codec.digest.DigestUtils;
 import providers.DictionariesProvider;
@@ -9,7 +11,7 @@ import java.util.*;
 
 public class Dsl2Html {
 
-    private static List<WordTranslation> getWordTranslations(List<String> listOfWordsToTranslate){
+    private static List<WordTranslation> getWordTranslations(List<String> listOfWordsToTranslate) {
         List<WordTranslation> wordTranslations = new ArrayList<>();
         listOfWordsToTranslate.forEach(word -> {
             WordTranslation wordTranslation = new WordTranslation(word);
@@ -18,7 +20,7 @@ public class Dsl2Html {
         return wordTranslations;
     }
 
-    private static List<WordTranslation> getWordTranslations(String[] arraysOfWordsToTranslate){
+    private static List<WordTranslation> getWordTranslations(String[] arraysOfWordsToTranslate) {
         List<String> listOfWordsToTranslate = Arrays.asList(arraysOfWordsToTranslate);
         List<WordTranslation> wordTranslations = new ArrayList<>();
         listOfWordsToTranslate.forEach(word -> {
@@ -28,13 +30,13 @@ public class Dsl2Html {
         return wordTranslations;
     }
 
-    private static void writeWordTranslationsToFile(WordTranslation wordTranslation, String outputDirectoryPath){
+    private static void writeWordTranslationsToFile(WordTranslation wordTranslation, String outputDirectoryPath) {
         String articleTitle = wordTranslation.getSourceWordLemmatized();
         String outputHtmlArticle = getOutputHtmlArticle(wordTranslation);
         FileProvider.saveToFile(outputDirectoryPath + "/" + articleTitle + ".html", outputHtmlArticle);
     }
 
-    private static String getOutputHtmlArticle(WordTranslation wordTranslation){
+    private static String getOutputHtmlArticle(WordTranslation wordTranslation) {
         String articleContainer = FileProvider.getFileByFileName("html-template/article-container.html");
         String articleTitle = wordTranslation.getSourceWordLemmatized();
         StringBuilder multipleArticles = new StringBuilder();
@@ -53,7 +55,7 @@ public class Dsl2Html {
         return articlesTemplate;
     }
 
-    public static void saveTranslationsToFiles(String[] pathToDictionaries, String[] wordsToTranslate, String outputDirectoryPath){
+    public static void saveTranslationsToFiles(String[] pathToDictionaries, String[] wordsToTranslate, String outputDirectoryPath) {
         DictionariesProvider.initializeDictionaries(pathToDictionaries);
         List<WordTranslation> wordTranslations = getWordTranslations(wordsToTranslate);
         wordTranslations.forEach(wordTranslation -> {
@@ -61,7 +63,7 @@ public class Dsl2Html {
         });
     }
 
-    public static Map<String, String> getTranslationsAsDictionary(String[] pathToDictionaries, String[] wordsToTranslate){
+    public static Map<String, String> getTranslationsAsDictionary(String[] pathToDictionaries, String[] wordsToTranslate) {
         DictionariesProvider.initializeDictionaries(pathToDictionaries);
         List<WordTranslation> wordTranslations = getWordTranslations(wordsToTranslate);
         Map<String, String> result = new HashMap<>();
@@ -71,5 +73,21 @@ public class Dsl2Html {
             result.put(translatedWord, htmlArticle);
         });
         return result;
+    }
+
+    public static List<String> getTranslationsAsList(String[] pathToDictionaries, String[] wordsToTranslate) {
+        Map<String, String> translations = getTranslationsAsDictionary(pathToDictionaries, wordsToTranslate);
+        List<String> translationsList = new ArrayList<>();
+        translations.forEach((key, value) -> {
+            translationsList.add(key);
+            translationsList.add(value);
+        });
+        return translationsList;
+    }
+
+    public static String[] getTranslationsAsArray(String[] pathToDictionaries, String[] wordsToTranslate) {
+        List<String> translations = getTranslationsAsList(pathToDictionaries, wordsToTranslate);
+        String[] translationsArray = translations.toArray(new String[translations.size()]);
+        return translationsArray;
     }
 }
