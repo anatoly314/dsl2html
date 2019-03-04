@@ -1,7 +1,4 @@
 package entrypoints;
-
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import models.WordTranslation;
 import org.apache.commons.codec.digest.DigestUtils;
 import providers.DictionariesProvider;

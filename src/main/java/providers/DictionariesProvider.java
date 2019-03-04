@@ -9,7 +9,7 @@ public class DictionariesProvider {
     private static Map<String, Dictionary> dictionaries;
 
     public static void initializeDictionaries(List<String> dictionariesPaths){
-        dictionaries = new HashMap<>();
+        dictionaries = new LinkedHashMap<>();
         dictionariesPaths.forEach(dictPath -> {
             Dictionary dictionary = new Dictionary(dictPath);
             if(!dictionary.isDictionaryInitialized()){

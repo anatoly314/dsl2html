@@ -16,8 +16,8 @@ public class main {
 
         String[] wordsToTranslate = {"angel","peace","world","brother"};
         String outputDirectoryPath = "test-output";
-//        Dsl2Html.saveTranslationsToFiles(dictPathsArray, wordsToTranslate, outputDirectoryPath);
+        Dsl2Html.saveTranslationsToFiles(dictPathsArray, wordsToTranslate, outputDirectoryPath);
 //        Map<String, String> articles = Dsl2Html.getTranslationsAsDictionary(dictPathsArray, wordsToTranslate);
-        List<String> articles = Dsl2Html.getTranslationsAsList(dictPathsArray, wordsToTranslate);
+        //List<String> articles = Dsl2Html.getTranslationsAsList(dictPathsArray, wordsToTranslate);
     }
 }
